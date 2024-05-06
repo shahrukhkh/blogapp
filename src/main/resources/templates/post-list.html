@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>BlogApp</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<style type="text/css">
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #FAF4D5;
+}
+
+header {
+	background-color: #02C8BD;
+	color: white;
+	padding: 10px;
+}
+
+header h1 {
+	margin: 0;
+}
+
+nav {
+	background-color: #02C8BD;
+	color: white;
+	padding: 10px;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	display: inline;
+	margin-right: 10px;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+}
+
+main {
+	padding: 20px;
+}
+
+main article {
+	line-height: 1.5;
+}
+
+footer {
+	background-color: #02C8BD;
+	color: white;
+	padding: 10px;
+	text-align: center;
+}
+
+.thd {
+	background-color: #FFB23E;
+	color: white;
+}
+.f{
+margin-right: 3px;
+}
+.thd2{
+background-color: #FFD18A; }
+
+.thd2  td:hover{
+	background-color: #E5FC69;
+}
+.thd2  th:hover{
+	background-color: #E5FC69;
+}
+.thd2 tr:hover {
+	background-color: #E9F79C;
+}
+.ccc{
+background-color: #E5FC69;
+}
+
+</style>
+</head>
+<body>
+	<header>
+		<h1>BlogApp</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="/yourpost">Posts</a></li>
+			<li><a href="/post">New Post</a></li>
+			<li><a href="/allcomment">Comments</a></li>
+			<li><a href="/logout">LogOut</a></li>
+		</ul>
+	</nav>
+	<main>
+
+		<h1 class="text-center">Post List</h1>
+
+		<table id="isT" class="table  table-bordered  ccc">
+			<thead class="thd">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Title</th>
+					<th scope="col">Description</th>
+					<th scope="col">CreatedDate</th>
+
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody id="table-body " class="thd2">
+				<tr th:each="e: ${list}">
+					<th th:text="${eStat.index}+1"></th>
+					<td th:text="${e.title}" id="sname"></td>
+					<td th:text="${e.description}" id="scname"></td>
+					<td th:text="${e.createdOn}" id="pname"></td>
+
+					<td class="d-flex f">
+					
+					
+					 <a th:href="@{/edit/}+${e.postId}" id="io" class="btn btn-warning f">Edit</a>
+					<a th:href="@{/delete/}+${e.postId}" class="btn btn-danger">Delete</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</main>
+	<footer>
+		<p>Copyright © 2023 BlogApp All rights reserved.</p>
+	</footer>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+</html>
